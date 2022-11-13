@@ -20,7 +20,7 @@
         <td>{{ user.age }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.mobile }}</td>
-        <td><button class="btn btn-success">Select</button></td>
+        <td><button class="btn btn-success" (click)="selectUser(user.id)">Select</button></td>
       </tr>
     </tbody>
   </table>
