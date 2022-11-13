@@ -1,1 +1,5 @@
-<app-user-list [users]="usersData"></app-user-list>
+<app-user-list
+  [users]="usersData"
+  [selectedId]="selectedUserId"
+  (selectUserEvent)="selectedUserId = $event"
+></app-user-list>

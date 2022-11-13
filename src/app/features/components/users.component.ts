@@ -7,6 +7,7 @@ import { IUser } from '../models/user.interface';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
+  selectedUserId: number | null = null;
   usersData: IUser[] = [
     {
       id: 1,

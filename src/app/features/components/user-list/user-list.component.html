@@ -13,14 +13,19 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let user of users">
+      <tr
+        *ngFor="let user of users" [ngClass]="selectedId === user.id ? 'bg-info' : ''" >
         <th scope="row">{{ user.id }}</th>
         <td>{{ user.name }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.age }}</td>
         <td>{{ user.email }}</td>
         <td>{{ user.mobile }}</td>
-        <td><button class="btn btn-success" (click)="selectUser(user.id)">Select</button></td>
+        <td>
+          <button class="btn btn-success" (click)="selectUser(user.id)">
+            Select
+          </button>
+        </td>
       </tr>
     </tbody>
   </table>

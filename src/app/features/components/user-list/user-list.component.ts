@@ -7,7 +7,9 @@ import { IUser } from '../../models/user.interface';
   styleUrls: ['./user-list.component.scss'],
 })
 export class UserListComponent implements OnInit {
+  isSelectedUser: boolean = false;
   @Input() users: IUser[] = [];
+  @Input() selectedId: number | null;
   @Output() selectUserEvent = new EventEmitter<number>();
 
   constructor() {}
