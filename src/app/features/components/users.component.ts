@@ -36,7 +36,13 @@ export class UsersComponent implements OnInit {
       lastName: 'Lopes',
     },
   ];
-  constructor() {}
 
   ngOnInit(): void {}
+
+  onDeleteUser(id: number | null) {
+    const indexIdToBeDeleted = this.usersData.findIndex(
+      (user) => user.id === id
+    );
+    this.usersData.splice(indexIdToBeDeleted, 1);
+  }
 }

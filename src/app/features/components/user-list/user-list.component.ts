@@ -11,6 +11,7 @@ export class UserListComponent implements OnInit {
   @Input() users: IUser[] = [];
   @Input() selectedId: number | null;
   @Output() selectUserEvent = new EventEmitter<number>();
+  @Output() deleteUserEvent = new EventEmitter<number | null>();
 
   constructor() {}
 
@@ -19,5 +20,9 @@ export class UserListComponent implements OnInit {
   selectUser(id: number) {
     this.selectUserEvent.emit(id);
     console.log(id);
+  }
+
+  deleteUser(id: number | null) {
+    this.deleteUserEvent.emit(id);
   }
 }

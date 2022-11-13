@@ -2,4 +2,5 @@
   [users]="usersData"
   [selectedId]="selectedUserId"
   (selectUserEvent)="selectedUserId = $event"
+  (deleteUserEvent)="onDeleteUser($event)"
 ></app-user-list>
