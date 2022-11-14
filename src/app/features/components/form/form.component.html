@@ -33,7 +33,10 @@
 
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
-      <input formControlName="email" type="email" class="form-control" id="email" />
+      <input
+      [ngClass]="{'border-danger': email.invalid && email.touched}"
+      formControlName="email" type="email" class="form-control" id="email" />
+      <span *ngIf="email.errors && email.errors['required'] && email.touched" class="text-danger mb-2">You are over 18, please add email</span>
     </div>
 
     <div class="mb-3">
@@ -44,6 +47,6 @@
       <span *ngIf="mobile.errors && mobile.errors['required'] && mobile.touched" class="text-danger mb-2">Please fill mobile number</span>
     </div>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button (click)="onSubmit()" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -18,7 +19,7 @@ export class FormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    console.log(this.form.valid);
+    this.ageValueChanges();
   }
 
   get name() {
@@ -39,5 +40,22 @@ export class FormComponent implements OnInit {
 
   get mobile() {
     return this.form.get('mobile') as FormControl;
+  }
+
+  ageValueChanges(){
+    this.age.valueChanges.pipe(
+      tap((age) =>{
+        if(age >=18){
+          this.email.setValidators([Validators.required]);
+        }else{
+          this.email.clearValidators();
+        }
+        this.email.updateValueAndValidity();
+      })
+    ).subscribe()
+  }
+
+  onSubmit(){
+      
   }
 }
