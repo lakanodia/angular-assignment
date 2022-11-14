@@ -1,8 +1,10 @@
 export interface IUser {
-  id: number;
+  id: number ;
   age: number;
   email: string;
-  mobile: String;
+  mobile: string;
   name: string;
   lastName: string;
 }
+
+export type INewUser = Pick<IUser, 'name' | 'lastName' | 'age' | 'email' | 'mobile'>;

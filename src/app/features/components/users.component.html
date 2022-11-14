@@ -1,3 +1,6 @@
+<div class="container mt-5">
+  <button (click)="showForm()" class="btn btn-success">Add New User</button>
+</div>
 <app-user-list
   [users]="usersData"
   [selectedId]="selectedUserId"
@@ -5,4 +8,4 @@
   (deleteUserEvent)="onDeleteUser($event)"
 ></app-user-list>
 
-<app-form></app-form>
+<app-form *ngIf="addNEwPostMode" (onSubmit)="onSubmit($event)"></app-form>
