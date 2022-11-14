@@ -17,7 +17,6 @@ export class UsersComponent implements OnInit {
       name: 'John',
       lastName: 'Doe',
     },
-
     {
       id: 2,
       age: 21,
