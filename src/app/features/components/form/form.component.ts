@@ -19,7 +19,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.form.valid);
-    
   }
 
   get name() {
