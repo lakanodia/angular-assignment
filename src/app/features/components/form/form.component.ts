@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-form',
@@ -8,16 +8,19 @@ import { FormControl, FormGroup } from '@angular/forms';
 })
 export class FormComponent implements OnInit {
   form = new FormGroup({
-    name: new FormControl(),
-    lastname: new FormControl(),
-    age: new FormControl(),
+    name: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    lastname: new FormControl('', [Validators.required, Validators.minLength(3)]),
+    age: new FormControl('', [Validators.required, Validators.min(1), Validators.max(99)]),
     email: new FormControl(),
-    mobile: new FormControl(),
+    mobile: new FormControl('', [Validators.required]),
   });
 
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.form.valid);
+    
+  }
 
   get name() {
     return this.form.get('name') as FormControl;
