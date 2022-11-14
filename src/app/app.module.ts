@@ -4,10 +4,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UsersModule } from './features/users/users.module';
 import { FormComponent } from './features/components/form/form.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, FormComponent],
-  imports: [BrowserModule, AppRoutingModule, UsersModule],
+  imports: [BrowserModule, AppRoutingModule, UsersModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
