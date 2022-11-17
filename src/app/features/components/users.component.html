@@ -6,6 +6,11 @@
   [selectedId]="selectedUserId"
   (selectUserEvent)="selectedUserId = $event"
   (deleteUserEvent)="onDeleteUser($event)"
+  (edit)="onEdit($event)"
 ></app-user-list>
 
-<app-form *ngIf="addNewUserMode" (onSubmit)="onSubmit($event)"></app-form>
+<app-form
+  *ngIf="addNewUserMode || chosenUserToEdit"
+  (onSubmit)="onSubmit($event)"
+  [chosenUserToEdit]="chosenUserToEdit"
+></app-form>

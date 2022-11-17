@@ -20,4 +20,8 @@ export class UsersHttpService {
   addUser(user: INewUser) {
     return this.httpClient.post<IUser>(this.backendUrl, user);
   }
+
+  updateUser(user: IUser) {
+    return this.httpClient.put<IUser>(`${this.backendUrl}/${user.id}`, user);
+  }
 }

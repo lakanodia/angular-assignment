@@ -10,6 +10,7 @@ import { UsersHttpService } from '../services/users-http.service';
 })
 export class UsersComponent implements OnInit {
   addNewUserMode: boolean = false;
+  chosenUserToEdit: IUser | null = null;
   selectedUserId: number | null = null;
   usersData: IUser[] = [];
 
@@ -22,6 +23,21 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this.usersHttp.getUsers().subscribe((data) => {
       this.usersData = data;
+    });
+  }
+
+  onEdit(id: number) {
+    console.log(id);
+    this.chosenUserToEdit = this.usersData.find(
+      (post: IUser) => post.id === id
+    ) as IUser;
+  }
+
+  updateUser(user: IUser) {
+    this.usersHttp.updateUser(user).subscribe((data) => {
+      console.log(data);
+      this.chosenUserToEdit = null;
+      this.getAllUsers();
     });
   }
 
@@ -67,6 +83,11 @@ export class UsersComponent implements OnInit {
       this.addNewUser(user);
       this.addNewUserMode = false;
       // this.usersData.push(newUser);
+    } else {
+      // this.usersData[indexToReplace] = user as IUser;
+      // this.updateUser(user as IUser);
+      // this.chosenUserToEdit = null;
+      this.updateUser(user as IUser);
     }
   }
 }

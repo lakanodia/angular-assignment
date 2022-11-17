@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { tap } from 'rxjs';
 import { INewUser } from '../../models/user.interface';
@@ -9,6 +9,17 @@ import { INewUser } from '../../models/user.interface';
   styleUrls: ['./form.component.scss'],
 })
 export class FormComponent implements OnInit {
+  _chosenUserToEdit: INewUser | null;
+  @Input() set chosenUserToEdit(user: INewUser | null) {
+    this._chosenUserToEdit = user;
+    if (user) {
+      this.form.patchValue(user);
+      // this.name.setValue(this.name);
+      // this.lastname.setValue(this.lastname);
+    } else {
+      this.form.reset();
+    }
+  }
   @Output() onSubmit = new EventEmitter<INewUser>();
 
   form = new FormGroup({
@@ -73,6 +84,7 @@ export class FormComponent implements OnInit {
       return;
     }
     const data: INewUser = this.form.value as INewUser;
-    this.onSubmit.emit(data);
+    // this.onSubmit.emit(data);
+    this.onSubmit.emit({ ...this._chosenUserToEdit, ...data });
   }
 }
