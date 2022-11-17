@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IUser } from '../models/user.interface';
+import { INewUser, IUser } from '../models/user.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -15,5 +15,9 @@ export class UsersHttpService {
 
   deleteUser(id: number | null) {
     return this.httpClient.delete(`${this.backendUrl}/${id}`);
+  }
+
+  addUser(user: INewUser) {
+    return this.httpClient.post<IUser>(this.backendUrl, user);
   }
 }

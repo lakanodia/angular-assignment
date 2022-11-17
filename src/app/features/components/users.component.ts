@@ -9,7 +9,7 @@ import { UsersHttpService } from '../services/users-http.service';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  addNEwPostMode: boolean = false;
+  addNewUserMode: boolean = false;
   selectedUserId: number | null = null;
   usersData: IUser[] = [];
 
@@ -24,6 +24,14 @@ export class UsersComponent implements OnInit {
       this.usersData = data;
     });
   }
+
+  addNewUser(user: INewUser) {
+    this.usersHttp.addUser(user).subscribe((data) => {
+      this.usersData.push(data);
+      console.log(data);
+    });
+  }
+
   onDeleteUser(id: number | null) {
     const indexIdToBeDeleted = this.usersData.findIndex(
       (user) => user.id === id
@@ -44,17 +52,20 @@ export class UsersComponent implements OnInit {
   }
 
   showForm() {
-    this.addNEwPostMode = !this.addNEwPostMode;
+    this.addNewUserMode = !this.addNewUserMode;
   }
-  onSubmit(user: INewUser) {
-    const newUser: IUser = {
-      id: 4,
-      name: user.name,
-      lastName: user.lastName,
-      age: user.age,
-      email: user.email,
-      mobile: user.mobile,
-    };
-    this.usersData.push(newUser);
+
+  onSubmit(user: INewUser | IUser) {
+    if (!(user as IUser).id) {
+      const newUser = {
+        name: user.name,
+        lastName: user.lastName,
+        age: user.age,
+        email: user.email,
+        mobile: user.mobile,
+      } as INewUser;
+      this.addNewUser(user);
+      // this.usersData.push(newUser);
+    }
   }
 }
