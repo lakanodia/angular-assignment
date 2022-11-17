@@ -4,7 +4,7 @@ export interface IUser {
   email: string;
   mobile: string;
   name: string;
-  lastName: string;
+  lastname: string;
 }
 
-export type INewUser = Pick<IUser, 'name' | 'lastName' | 'age' | 'email' | 'mobile'>;
+export type INewUser = Pick<IUser, 'name' | 'lastname' | 'age' | 'email' | 'mobile'>;

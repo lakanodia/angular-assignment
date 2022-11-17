@@ -59,12 +59,13 @@ export class UsersComponent implements OnInit {
     if (!(user as IUser).id) {
       const newUser = {
         name: user.name,
-        lastName: user.lastName,
+        lastname: user.lastname,
         age: user.age,
         email: user.email,
         mobile: user.mobile,
       } as INewUser;
       this.addNewUser(user);
+      this.addNewUserMode = false;
       // this.usersData.push(newUser);
     }
   }
