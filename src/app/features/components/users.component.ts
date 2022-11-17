@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { catchError, of, tap } from 'rxjs';
 import { INewUser, IUser } from '../models/user.interface';
 import { UsersHttpService } from '../services/users-http.service';
 
@@ -27,7 +28,19 @@ export class UsersComponent implements OnInit {
     const indexIdToBeDeleted = this.usersData.findIndex(
       (user) => user.id === id
     );
-    this.usersData.splice(indexIdToBeDeleted, 1);
+
+    this.usersHttp
+      .deleteUser(id)
+      .pipe(
+        tap((data) => {
+          this.usersData.splice(indexIdToBeDeleted, 1);
+        }),
+        catchError((err) => {
+          alert('Error, Something Happend');
+          return of(null);
+        })
+      )
+      .subscribe();
   }
 
   showForm() {

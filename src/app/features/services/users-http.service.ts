@@ -12,4 +12,8 @@ export class UsersHttpService {
   getUsers() {
     return this.httpClient.get<IUser[]>(this.backendUrl);
   }
+
+  deleteUser(id: number | null) {
+    return this.httpClient.delete(`${this.backendUrl}/${id}`);
+  }
 }
