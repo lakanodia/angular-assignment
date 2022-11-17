@@ -5,10 +5,11 @@ import { UsersComponent } from '../components/users.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
 import { FormComponent } from '../components/form/form.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [UsersComponent, UserListComponent, FormComponent],
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, HttpClientModule],
 
   exports: [UsersComponent],
 })
