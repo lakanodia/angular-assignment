@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { INewUser, IUser } from '../models/user.interface';
+import { UsersHttpService } from '../services/users-http.service';
 
 @Component({
   selector: 'app-users',
@@ -7,12 +8,21 @@ import { INewUser, IUser } from '../models/user.interface';
   styleUrls: ['./users.component.scss'],
 })
 export class UsersComponent implements OnInit {
-  addNEwPostMode:boolean = false;
+  addNEwPostMode: boolean = false;
   selectedUserId: number | null = null;
-  usersData: IUser[] = [ ];
+  usersData: IUser[] = [];
 
-  ngOnInit(): void {}
+  constructor(private usersHttp: UsersHttpService) {}
 
+  ngOnInit(): void {
+    this.getAllUsers();
+  }
+
+  getAllUsers() {
+    this.usersHttp.getUsers().subscribe((data) => {
+      this.usersData = data;
+    });
+  }
   onDeleteUser(id: number | null) {
     const indexIdToBeDeleted = this.usersData.findIndex(
       (user) => user.id === id
@@ -20,10 +30,10 @@ export class UsersComponent implements OnInit {
     this.usersData.splice(indexIdToBeDeleted, 1);
   }
 
-  showForm(){
+  showForm() {
     this.addNEwPostMode = !this.addNEwPostMode;
   }
-  onSubmit(user: INewUser){
+  onSubmit(user: INewUser) {
     const newUser: IUser = {
       id: 4,
       name: user.name,
