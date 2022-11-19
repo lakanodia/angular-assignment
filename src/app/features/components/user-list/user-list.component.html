@@ -17,6 +17,7 @@
         <th scope="col">Mobile</th>
         <th scope="col">Action</th>
         <th scope="col">Action</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -38,6 +39,11 @@
         <td>
           <button class="btn btn-warning" (click)="editUser(user.id)">
             Edit
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-info" (click)="getFullInfoUser(user.id)">
+            Get full info
           </button>
         </td>
       </tr>

@@ -13,6 +13,7 @@ export class UserListComponent implements OnInit {
   @Output() selectUserEvent = new EventEmitter<number>();
   @Output() deleteUserEvent = new EventEmitter<number | null>();
   @Output() edit = new EventEmitter<number>();
+  @Output() fullInfo = new EventEmitter<number>();
 
   constructor() {}
 
@@ -29,5 +30,9 @@ export class UserListComponent implements OnInit {
 
   editUser(id: number) {
     this.edit.emit(id);
+  }
+
+  getFullInfoUser(id: number) {
+    this.fullInfo.emit(id);
   }
 }

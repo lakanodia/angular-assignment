@@ -12,6 +12,7 @@ export class UsersComponent implements OnInit {
   addNewUserMode: boolean = false;
   chosenUserToEdit: IUser | null = null;
   selectedUserId: number | null = null;
+  chosenUSerForFullDetails: IUser | null;
   usersData: IUser[] = [];
 
   constructor(private usersHttp: UsersHttpService) {}
@@ -47,6 +48,11 @@ export class UsersComponent implements OnInit {
     });
   }
 
+  onGetUserInfo(id: number) {
+    this.usersHttp.getOneUser(id).subscribe((data) => {
+      this.chosenUSerForFullDetails = data;
+    });
+  }
   onDeleteUser(id: number | null) {
     const indexIdToBeDeleted = this.usersData.findIndex(
       (user) => user.id === id

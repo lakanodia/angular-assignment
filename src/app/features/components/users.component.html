@@ -1,16 +1,24 @@
 <div class="container mt-5">
   <button (click)="showForm()" class="btn btn-success">Add New User</button>
-</div>
-<app-user-list
-  [users]="usersData"
-  [selectedId]="selectedUserId"
-  (selectUserEvent)="selectedUserId = $event"
-  (deleteUserEvent)="onDeleteUser($event)"
-  (edit)="onEdit($event)"
-></app-user-list>
 
-<app-form
-  *ngIf="addNewUserMode || chosenUserToEdit"
-  (onSubmit)="onSubmit($event)"
-  [chosenUserToEdit]="chosenUserToEdit"
-></app-form>
+  <app-user-list
+    [users]="usersData"
+    [selectedId]="selectedUserId"
+    (selectUserEvent)="selectedUserId = $event"
+    (deleteUserEvent)="onDeleteUser($event)"
+    (edit)="onEdit($event)"
+    (fullInfo)="onGetUserInfo($event)"
+  ></app-user-list>
+
+  <app-form
+    *ngIf="addNewUserMode || chosenUserToEdit"
+    (onSubmit)="onSubmit($event)"
+    [chosenUserToEdit]="chosenUserToEdit"
+  ></app-form>
+
+  <ng-container *ngIf="chosenUSerForFullDetails">
+    <h1>Users Name: {{ chosenUSerForFullDetails.name }}</h1>
+    <h2>Users Lastname: {{ chosenUSerForFullDetails.lastname }}</h2>
+    <h3>Users age: {{ chosenUSerForFullDetails.age }}</h3>
+  </ng-container>
+</div>

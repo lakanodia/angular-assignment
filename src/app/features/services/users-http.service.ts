@@ -13,6 +13,10 @@ export class UsersHttpService {
     return this.httpClient.get<IUser[]>(this.backendUrl);
   }
 
+  getOneUser(id: number) {
+    return this.httpClient.get<IUser>(`${this.backendUrl}/${id}`);
+  }
+
   deleteUser(id: number | null) {
     return this.httpClient.delete(`${this.backendUrl}/${id}`);
   }
