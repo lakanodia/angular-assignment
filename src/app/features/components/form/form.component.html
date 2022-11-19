@@ -1,55 +1,117 @@
-
 <div class="container">
- 
   <form class="m-5" [formGroup]="form">
     <h3>Fill Form</h3>
     <div class="mb-3">
       <label for="name" class="form-label">User Name</label>
-      <input 
-      [ngClass]="{'border-danger': name.invalid && name.touched}"
-      formControlName="name" type="text" class="form-control" id="name" />
-      <span *ngIf="name.errors && name.errors['required'] && name.touched" class="text-danger mb-2">Name cannot be empty</span>
-      <span *ngIf="name.errors && name.errors['minlength'] && name.touched" class="text-danger mb-2">Use minimum 3 character</span>
-    </div>
-
-
-    <div class="mb-3">
-      <label
-      for="lastname" class="form-label">Last Name</label>
-      <input 
-      [ngClass]="{'border-danger': lastname.invalid && lastname.touched}"
-      formControlName="lastname" type="text" class="form-control" id="lastname" />
-      <span *ngIf="lastname.errors && lastname.errors['required'] && lastname.touched" class="text-danger mb-2">Last name cannot be empty</span>
-      <span *ngIf="lastname.errors && lastname.errors['minlength'] && lastname.touched" class="text-danger mb-2">Use minimum 3 character</span>
-    </div>
-
-    <div class="mb-3">
-      <label
-      for="age" class="form-label">Age</label>
       <input
-      [ngClass]="{'border-danger': age.invalid && age.touched}"
-      formControlName="age" type="number" class="form-control" id="age" />
-      <span *ngIf="age.errors && age.errors['required'] && age.touched" class="text-danger mb-2">Age cannot be empty</span>
-      <span *ngIf="age.errors && age.errors['min'] && age.touched " class="text-danger mb-2">Age must be minimum 1 </span>
-      <span *ngIf="age.errors && age.errors['max'] && age.touched " class="text-danger mb-2">Age must be maximum 99</span>
+        [ngClass]="{ 'border-danger': name.invalid && name.touched }"
+        formControlName="name"
+        type="text"
+        class="form-control"
+        id="name"
+      />
+      <span
+        *ngIf="name.errors && name.errors['required'] && name.touched"
+        class="text-danger mb-2"
+        >Name cannot be empty</span
+      >
+      <span
+        *ngIf="name.errors && name.errors['minlength'] && name.touched"
+        class="text-danger mb-2"
+        >Use minimum 3 character</span
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="lastname" class="form-label">Last Name</label>
+      <input
+        [ngClass]="{ 'border-danger': lastname.invalid && lastname.touched }"
+        formControlName="lastname"
+        type="text"
+        class="form-control"
+        id="lastname"
+      />
+      <span
+        *ngIf="
+          lastname.errors && lastname.errors['required'] && lastname.touched
+        "
+        class="text-danger mb-2"
+        >Last name cannot be empty</span
+      >
+      <span
+        *ngIf="
+          lastname.errors && lastname.errors['minlength'] && lastname.touched
+        "
+        class="text-danger mb-2"
+        >Use minimum 3 character</span
+      >
+    </div>
+
+    <div class="mb-3">
+      <label for="age" class="form-label">Age</label>
+      <input
+        [ngClass]="{ 'border-danger': age.invalid && age.touched }"
+        formControlName="age"
+        type="number"
+        class="form-control"
+        id="age"
+      />
+      <span
+        *ngIf="age.errors && age.errors['required'] && age.touched"
+        class="text-danger mb-2"
+        >Age cannot be empty</span
+      >
+      <span
+        *ngIf="age.errors && age.errors['min'] && age.touched"
+        class="text-danger mb-2"
+        >Age must be minimum 1
+      </span>
+      <span
+        *ngIf="age.errors && age.errors['max'] && age.touched"
+        class="text-danger mb-2"
+        >Age must be maximum 99</span
+      >
     </div>
 
     <div class="mb-3">
       <label for="email" class="form-label">Email</label>
       <input
-      [ngClass]="{'border-danger': email.invalid && email.touched}"
-      formControlName="email" type="email" class="form-control" id="email" />
-      <span *ngIf="email.errors && email.errors['required'] && email.touched" class="text-danger mb-2">You are over 18, please add email</span>
+        [ngClass]="{ 'border-danger': email.invalid && email.touched }"
+        formControlName="email"
+        type="email"
+        class="form-control"
+        id="email"
+      />
+      <span
+        *ngIf="email.errors && email.errors['required'] && email.touched"
+        class="text-danger mb-2"
+        >You are over 18, please add email</span
+      >
     </div>
 
     <div class="mb-3">
       <label for="mobile" class="form-label">Mobile</label>
       <input
-      [ngClass]="{'border-danger': mobile.invalid && mobile.touched}"
-      formControlName="mobile" type="number" class="form-control" id="mobile" />
-      <span *ngIf="mobile.errors && mobile.errors['required'] && mobile.touched" class="text-danger mb-2">Please fill mobile number</span>
+        [ngClass]="{ 'border-danger': mobile.invalid && mobile.touched }"
+        formControlName="mobile"
+        type="number"
+        class="form-control"
+        id="mobile"
+      />
+      <span
+        *ngIf="mobile.errors && mobile.errors['required'] && mobile.touched"
+        class="text-danger mb-2"
+        >Please fill mobile number</span
+      >
     </div>
 
-    <button (click)="onUserSubmit()" [disabled]="!form.valid" type="submit" class="btn btn-primary">Add User</button>
+    <button
+      (click)="onUserSubmit()"
+      [disabled]="!form.valid"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Add User
+    </button>
   </form>
 </div>

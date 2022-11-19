@@ -27,9 +27,8 @@ export class UsersComponent implements OnInit {
   }
 
   onEdit(id: number) {
-    console.log(id);
     this.chosenUserToEdit = this.usersData.find(
-      (post: IUser) => post.id === id
+      (user: IUser) => user.id === id
     ) as IUser;
   }
 

@@ -20,6 +20,7 @@ export class FormComponent implements OnInit {
       this.form.reset();
     }
   }
+  
   @Output() onSubmit = new EventEmitter<INewUser>();
 
   form = new FormGroup({
