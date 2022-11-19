@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 import { INewUser, IUser } from '../models/user.interface';
+import { HeaderService } from '../services/header.service';
 import { UsersHttpService } from '../services/users-http.service';
 
 @Component({
@@ -15,7 +16,10 @@ export class UsersComponent implements OnInit {
   chosenUSerForFullDetails: IUser | null;
   usersData: IUser[] = [];
 
-  constructor(private usersHttp: UsersHttpService) {}
+  constructor(
+    private usersHttp: UsersHttpService,
+    private headerService: HeaderService
+  ) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -24,6 +28,7 @@ export class UsersComponent implements OnInit {
   getAllUsers() {
     this.usersHttp.getUsers().subscribe((data) => {
       this.usersData = data;
+      this.headerService.userCount = data.length;
     });
   }
 
@@ -45,6 +50,7 @@ export class UsersComponent implements OnInit {
     this.usersHttp.addUser(user).subscribe((data) => {
       this.usersData.push(data);
       console.log(data);
+      this.headerService.userCount = this.headerService.userCount + 1;
     });
   }
 
@@ -63,6 +69,7 @@ export class UsersComponent implements OnInit {
       .pipe(
         tap((data) => {
           this.usersData.splice(indexIdToBeDeleted, 1);
+          this.headerService.userCount = this.headerService.userCount - 1;
         }),
         catchError((err) => {
           alert('Error, Something Happend');

@@ -16,9 +16,9 @@
     [chosenUserToEdit]="chosenUserToEdit"
   ></app-form>
 
-  <ng-container *ngIf="chosenUSerForFullDetails">
-    <h1>Users Name: {{ chosenUSerForFullDetails.name }}</h1>
-    <h2>Users Lastname: {{ chosenUSerForFullDetails.lastname }}</h2>
-    <h3>Users age: {{ chosenUSerForFullDetails.age }}</h3>
+  <ng-container class="border border-primary" *ngIf="chosenUSerForFullDetails">
+    <h1>Name: {{ chosenUSerForFullDetails.name }}</h1>
+    <h2>Lastname: {{ chosenUSerForFullDetails.lastname }}</h2>
+    <h3>Age: {{ chosenUSerForFullDetails.age }}</h3>
   </ng-container>
 </div>
