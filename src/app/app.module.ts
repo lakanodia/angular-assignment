@@ -7,6 +7,9 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './features/components/header/header.component';
 import { SharedModule } from './features/shared/shared.module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RequestLoggerService } from './features/shared/interceptors/request-logger.service';
+import { RouterModule, Routes } from '@angular/router';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -17,8 +20,11 @@ import { SharedModule } from './features/shared/shared.module';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
+    RouterModule,
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: RequestLoggerService, multi: true },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
