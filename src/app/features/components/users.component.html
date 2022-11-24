@@ -1,5 +1,11 @@
 <div class="container mt-5">
-  <h1>{{ language === "ka" ? "მომხმარებლების გევრდი" : "Users Page" }}</h1>
+  <h1>
+    {{
+      (changeLanguage$ | async) === "ka"
+        ? "მომხმარებლების გევრდი"
+        : "Users Page"
+    }}
+  </h1>
   <button (click)="showForm()" class="btn btn-success">Add New User</button>
 
   <app-user-list

@@ -15,6 +15,7 @@ export class UsersComponent implements OnInit {
   selectedUserId: number | null = null;
   chosenUSerForFullDetails: IUser | null;
   usersData: IUser[] = [];
+  changeLanguage$ = this.headerService.chosenLanguage$;
 
   constructor(
     private usersHttp: UsersHttpService,
@@ -104,6 +105,7 @@ export class UsersComponent implements OnInit {
   }
 
   get language(): Language {
-    return this.headerService.chosenLanguage;
+    return 'en';
+    // return this.headerService.chosenLanguage;
   }
 }

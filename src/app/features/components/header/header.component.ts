@@ -7,18 +7,20 @@ import { HeaderService } from '../../services/header.service';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
+  language$ = this.headerService.chosenLanguage$;
   constructor(private headerService: HeaderService) {}
-  get count(){
+  get count() {
     return this.headerService.userCount;
   }
 
-  get language(){
-    return this.headerService.chosenLanguage;
-  }
+  // get language(){
+  //   return this.headerService.chosenLanguage;
+  // }
 
-  onSwitchLanguage(){
-    this.headerService.chosenLanguage = 
-      this.headerService.chosenLanguage === 'ka' ? 'en' : 'ka';
+  onSwitchLanguage() {
+    // this.headerService.chosenLanguage =
+    //   this.headerService.chosenLanguage === 'ka' ? 'en' : 'ka';
+    this.headerService.changeLanguage();
   }
   ngOnInit(): void {}
 }

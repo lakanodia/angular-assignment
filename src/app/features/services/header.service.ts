@@ -1,13 +1,16 @@
 import { Injectable } from '@angular/core';
-export type Language= 'en' | 'ka';
+import { BehaviorSubject } from 'rxjs';
+export type Language = 'en' | 'ka';
 @Injectable({
   providedIn: 'root',
 })
-
-
 export class HeaderService {
   private _usersCount: number = 0;
-  private _chosenLanguage:Language = 'en';
+  private _chosenLanguage: Language = 'en';
+
+  private chosenLanguageSubject$ = new BehaviorSubject('en');
+  public chosenLanguage$ = this.chosenLanguageSubject$.asObservable();
+
   constructor() {}
 
   get userCount() {
@@ -17,12 +20,17 @@ export class HeaderService {
   set userCount(newUser: number) {
     this._usersCount = newUser;
   }
-  
-  get chosenLanguage(): Language{
-    return this._chosenLanguage;
-  }
-  set chosenLanguage(newLanguage: Language){
-    this._chosenLanguage = newLanguage;
-  }
 
+  // get chosenLanguage(): Language {
+  //   return this._chosenLanguage;
+  // }
+  // set chosenLanguage(newLanguage: Language) {
+  //   this._chosenLanguage = newLanguage;
+  // }
+
+  changeLanguage() {
+    this.chosenLanguageSubject$.next(
+      this.chosenLanguageSubject$.value === 'en' ? 'ka' : 'en'
+    );
+  }
 }

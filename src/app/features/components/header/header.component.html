@@ -19,8 +19,10 @@
       <li class="nav-item">
         <a href="#" class="nav-link fs-3">Users: {{ count }} </a>
       </li>
-      <li class="nav-item hover" style="cursor: pointer;">
-        <a (click)="onSwitchLanguage()" class="nav-link">Language: {{ language }}</a>
+      <li class="nav-item hover" style="cursor: pointer">
+        <a (click)="onSwitchLanguage()" class="nav-link"
+          >Language: {{ language$ | async }}</a
+        >
       </li>
     </ul>
   </header>
