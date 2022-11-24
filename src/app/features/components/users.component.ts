@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { catchError, of, tap } from 'rxjs';
 import { INewUser, IUser } from '../models/user.interface';
-import { HeaderService } from '../services/header.service';
+import { HeaderService, Language } from '../services/header.service';
 import { UsersHttpService } from '../services/users-http.service';
 
 @Component({
@@ -101,5 +101,9 @@ export class UsersComponent implements OnInit {
       // this.chosenUserToEdit = null;
       this.updateUser(user as IUser);
     }
+  }
+
+  get language(): Language {
+    return this.headerService.chosenLanguage;
   }
 }
