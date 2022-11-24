@@ -1,0 +1,9 @@
+<div
+  class="card container border border-success"
+  style="max-width: 400px"
+  *ngIf="isVisible$ | async as visible"
+>
+  <div class="card-body text-success">
+    Language has changed to {{ visible }}
+  </div>
+</div>

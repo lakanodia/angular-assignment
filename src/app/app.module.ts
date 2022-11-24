@@ -6,6 +6,7 @@ import { UsersModule } from './features/users/users.module';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './features/components/header/header.component';
+import { SharedModule } from './features/shared/shared.module';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent],
@@ -15,6 +16,7 @@ import { HeaderComponent } from './features/components/header/header.component';
     UsersModule,
     FormsModule,
     ReactiveFormsModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
