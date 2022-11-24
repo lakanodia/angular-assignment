@@ -18,7 +18,6 @@ export class HeaderService {
     this._usersCount = newUser;
   }
   
-
   get chosenLanguage(): Language{
     return this._chosenLanguage;
   }

@@ -17,7 +17,8 @@ export class HeaderComponent implements OnInit {
   }
 
   onSwitchLanguage(){
-    this.headerService.chosenLanguage = this.headerService.chosenLanguage === 'ka' ? 'en' : 'ka';
+    this.headerService.chosenLanguage = 
+      this.headerService.chosenLanguage === 'ka' ? 'en' : 'ka';
   }
   ngOnInit(): void {}
 }
