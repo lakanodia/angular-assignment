@@ -31,7 +31,15 @@
           >Users</a
         >
       </li>
-      <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
+      <li class="nav-item">
+        <a
+          [routerLink]="['demo', 6]"
+          routerLinkActive="active"
+          href="#"
+          class="nav-link"
+          >Demo</a
+        >
+      </li>
       <li class="nav-item">
         <a href="#" class="nav-link fs-3">Users: {{ count }} </a>
       </li>

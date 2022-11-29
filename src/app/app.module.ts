@@ -10,9 +10,10 @@ import { SharedModule } from './features/shared/shared.module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RequestLoggerService } from './features/shared/interceptors/request-logger.service';
 import { RouterModule, Routes } from '@angular/router';
+import { DemoComponent } from './features/components/demo/demo.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, DemoComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { IUser } from '../../models/user.interface';
 
 @Component({
@@ -15,7 +16,9 @@ export class UserListComponent implements OnInit {
   @Output() edit = new EventEmitter<number>();
   @Output() fullInfo = new EventEmitter<number>();
 
-  constructor() {}
+  constructor(private activateRoute: ActivatedRoute) {
+    console.log(this.activateRoute);
+  }
 
   ngOnInit(): void {}
 
